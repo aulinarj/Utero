@@ -1,5 +1,6 @@
 package id.billboard.utero.uterobillboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,9 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import id.billboard.utero.uterobillboard.adapter.HotelAdapter;
+import id.billboard.utero.uterobillboard.model.Hotel;
 
 public class MainActivity extends AppCompatActivity implements HotelAdapter.IHotelAdapter {
+    static final String HOTEL = "hotel";
+    ArrayList<Hotel> mList = new ArrayList<>();
+    int itemPos;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -27,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements HotelAdapter.IHot
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -78,8 +84,11 @@ public class MainActivity extends AppCompatActivity implements HotelAdapter.IHot
 
     @Override
     public void doClick(int pos) {
-
+        Intent intent = new Intent(this, DetailGalery.class);
+        intent.putExtra(HOTEL, mList.get(pos));
+        startActivity(intent);
     }
+
 
     /**
      * A placeholder fragment containing a simple view.
