@@ -128,9 +128,6 @@ public class Login extends AppCompatActivity {
 
                     // Check for error node in json
                     if (success == 1) {
-                        String username = jObj.getString(TAG_USERNAME);
-                        String id = jObj.getString(TAG_ID);
-
                         Log.e("Successfully Login!", jObj.toString());
 
                         Toast.makeText(getApplicationContext(),
@@ -139,8 +136,6 @@ public class Login extends AppCompatActivity {
                         // Memanggil main activity
                         Intent intent = new Intent(Login.this,
                                 MainActivity.class);
-                        intent.putExtra(TAG_ID, id);
-                        intent.putExtra(TAG_USERNAME, username);
                         finish();
                         startActivity(intent);
                     } else {
