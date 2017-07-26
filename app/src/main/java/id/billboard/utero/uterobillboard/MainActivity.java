@@ -138,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements HotelAdapter.IHot
         public Fragment getItem(int position) {
             if (position == 0)
                 return new GaleryFragment();
+            else if (position == 2)
+                return new HelpFragment() ;
             else
                 return PlaceholderFragment.newInstance(position + 1);
         }
